@@ -396,3 +396,162 @@
 //   return `${evenSum}, ${oddSum}`;
 // }
 // console.log(sumOddEven(10));
+
+// Func19. invertTime(H, M, S) funksiyasini hosil qiling. H - soat, M - minut, S - sekund. Funksiya orqali berilgan soat, minut va sekundni T sekundga almashtiruvchi programma tuzilsin.
+// invertTime(0, 6, 40) => 400
+
+// function invertTime(H, M, S) {
+//   return H * 3600 + M * 60 + S;
+// }
+
+// console.log(invertTime(0, 6, 40));
+
+// Func20. decTime(H, M, S) funksiyasini hosil qiling. H - soat, M - minut, S - sekund. Funksiya berilgan vaqtdan 1 sekund oldingi vaqtni ko’rsatsin.
+// decTime(0, 6, 40) => 00:06:39
+
+// function decTime(H, M, S) {
+//   let totalSeconds = H * 3600 + M * 60 + S;
+
+//   totalSeconds = totalSeconds - 1;
+
+//   if (totalSeconds < 0) {
+//     totalSeconds = 24 * 3600 - 1;
+//   }
+
+//   let hours = Math.floor(totalSeconds / 3600);
+//   let minutes = Math.floor((totalSeconds % 3600) / 60);
+//   let seconds = totalSeconds % 60;
+
+//   let HH = hours.toString().padStart(2, "0");
+//   let MM = minutes.toString().padStart(2, "0");
+//   let SS = seconds.toString().padStart(2, "0");
+
+//   return `${HH}:${MM}:${SS}`;
+// }
+
+// console.log(decTime(0, 6, 40));
+
+// Func21. Mantiqiy qiymat qaytaruvchi isLeapYear(Y) funksiyasini hosil qiling. Funksiya berilgan Y - yil kabisa yili bo'lsa true, aks holda false qiymat qaytarsin.
+
+// function isLeapYear(Y) {
+//   return Y % 4 === 0 && (Y % 100 !== 0 || Y % 400 === 0);
+// }
+
+// console.log(isLeapYear(2020));
+
+// Func22. isLeapYear(Y) funksiyasidan foydalangan xolda, butun qiymat qaytaruvchi monthDays(M, Y) funksiyasini hosil qiling. Funksiya berilgan Y - yilning M - oyi kunlar sonini qaytarsin.
+// monthDays(2, 2020) => 28
+// monthDays(3, 2021) => 31
+
+// function isLeapYear(Y) {
+//   return Y % 4 === 0 && (Y % 100 !== 0 || Y % 400 === 0);
+// }
+
+// function monthDays(M, Y) {
+//   if (M === 2) {
+//     return isLeapYear(Y) ? 29 : 28;
+//   } else if ([4, 6, 9, 11].includes(M)) {
+//     return 30;
+//   } else {
+//     return 31;
+//   }
+// }
+
+// console.log(monthDays(2, 2020));
+
+// Func23. monthDays funksiyasidan foydalangan xolda, prevDate (D, M, Y) funksiyasini hosil qiling. Funksiya berilgan sanadan oldingi sanani aniqlasin, D - kun, Y - yil, M - oyini qaytarsin. QY
+// prevDate (10, 3, 2022) => 09.03.2022
+
+// function isLeapYear(Y) {
+//   return Y % 4 === 0 && (Y % 100 !== 0 || Y % 400 === 0);
+// }
+
+// function monthDays(M, Y) {
+//   if (M === 2) {
+//     return isLeapYear(Y) ? 29 : 28;
+//   } else if ([4, 6, 9, 11].includes(M)) {
+//     return 30;
+//   } else {
+//     return 31;
+//   }
+// }
+
+// function prevDate(D, M, Y) {
+//   if (D > 1) {
+//     D = D - 1;
+//   } else {
+//     if (M === 1) {
+//       M = 12;
+//       Y = Y - 1;
+//     } else {
+//       M = M - 1;
+//     }
+//     D = monthDays(M, Y);
+//   }
+
+//   let DD = D.toString().padStart(2, "0");
+//   let MM = M.toString().padStart(2, "0");
+//   let YYYY = Y.toString();
+
+//   return `${DD}.${MM}.${YYYY}`;
+// }
+
+// console.log(prevDate(10, 3, 2022)); // 09.03.2022
+
+// Func24. monthDays funksiyasidan foydalangan xolda, nextDate(D, M, Y) funksiyasini hosil qiling. Funksiya berilgan sanadan keying sanani aniqlasin, D-kun, Y yil, M - oyini qaytarsin. QY
+// nextDate (10, 3, 2022) => 11.03.2022
+
+// function isLeapYear(Y) {
+//   return Y % 4 === 0 && (Y % 100 !== 0 || Y % 400 === 0);
+// }
+
+// function monthDays(M, Y) {
+//   if (M === 2) {
+//     return isLeapYear(Y) ? 29 : 28;
+//   } else if ([4, 6, 9, 11].includes(M)) {
+//     return 30;
+//   } else {
+//     return 31;
+//   }
+// }
+
+// function nextDate(D, M, Y) {
+//   if (D < monthDays(M, Y)) {
+//     D = D + 1;
+//   } else {
+//     if (M === 12) {
+//       M = 1;
+//       Y = Y + 1;
+//     } else {
+//       M = M + 1;
+//     }
+//     D = 1;
+//   }
+
+//   let DD = D.toString().padStart(2, "0");
+//   let MM = M.toString().padStart(2, "0");
+//   let YYYY = Y.toString();
+
+//   return `${DD}.${MM}.${YYYY}`;
+// }
+
+// console.log(nextDate(10, 3, 2022));
+
+// Func25. N sonining bo’luvchilari soni va bo’luvchilari yi’gindisini chiqaruvchi getDividersNumberAndSum(N) nomli funksiya yozing. QYM
+// getDividersNumberAndSum(12) => 6, 24
+
+// function getDividersNumberAndSum(N) {
+//   let count = 0;
+//   let sum = 0;
+
+//   for (let i = 1; i <= N; i++) {
+//     if (N % i === 0) {
+//       count++;
+//       sum += i;
+//     }
+//   }
+
+//   return `${count}, ${sum}`;
+// }
+
+// console.log(getDividersNumberAndSum(12));
